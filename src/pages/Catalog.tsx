@@ -1,6 +1,6 @@
+import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ChevronDown, Grid3X3, List, SlidersHorizontal } from "lucide-react";
-import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileBottomDock from "@/components/MobileBottomDock";
@@ -40,6 +40,11 @@ const Catalog = () => {
   const categoryName = slug 
     ? slug.replace(/-/g, " ").replace(/\b\w/g, l => l.toUpperCase())
     : "Toate Produsele";
+
+  // Scroll to top when page loads or slug changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
 
   return (
     <div className="min-h-screen bg-background pb-20 lg:pb-0">
