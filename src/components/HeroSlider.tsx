@@ -64,7 +64,7 @@ const HeroSlider = () => {
   };
 
   return (
-    <div className="relative w-full h-[300px] md:h-[400px] overflow-hidden md:rounded-3xl md:mx-4 md:mt-4 md:max-w-7xl md:mx-auto">
+    <div className="relative w-full h-[300px] md:h-[450px] overflow-hidden">
       {slides.map((slide, index) => (
         <div
           key={slide.id}
@@ -93,9 +93,9 @@ const HeroSlider = () => {
 
             {/* Right - Image placeholder area */}
             <div className="hidden md:flex flex-1 items-center justify-center">
-              <div className="w-64 h-64 bg-white/30 rounded-3xl flex items-center justify-center">
-                <div className={`w-20 h-20 ${slide.accentColor} rounded-2xl flex items-center justify-center shadow-lg`}>
-                  <Building2 className="text-white" size={40} />
+              <div className="w-80 h-80 bg-white/20 border-2 border-dashed border-white/40 flex items-center justify-center">
+                <div className={`w-24 h-24 ${slide.accentColor} flex items-center justify-center shadow-lg`}>
+                  <Building2 className="text-white" size={48} />
                 </div>
               </div>
             </div>
@@ -106,13 +106,13 @@ const HeroSlider = () => {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-card/90 backdrop-blur text-primary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all z-10 rounded-full shadow-lg"
+        className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-card/90 backdrop-blur text-primary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all z-10 shadow-lg"
       >
         <ChevronLeft size={24} />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-card/90 backdrop-blur text-primary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all z-10 rounded-full shadow-lg"
+        className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-card/90 backdrop-blur text-primary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all z-10 shadow-lg"
       >
         <ChevronRight size={24} />
       </button>
@@ -123,7 +123,7 @@ const HeroSlider = () => {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all ${
+            className={`w-2 h-2 md:w-3 md:h-3 transition-all ${
               index === currentSlide ? "bg-primary w-6 md:w-8" : "bg-muted-foreground/30"
             }`}
           />
