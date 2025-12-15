@@ -4,7 +4,6 @@ import ProductCarousel from "@/components/ProductCarousel";
 import SalesSection from "@/components/SalesSection";
 import PopularCategories from "@/components/PopularCategories";
 import BrandSlider from "@/components/BrandSlider";
-import Features from "@/components/Features";
 import MapSection from "@/components/MapSection";
 import Footer from "@/components/Footer";
 import MobileBottomDock from "@/components/MobileBottomDock";
@@ -48,7 +47,6 @@ const Index = () => {
         />
         <PopularCategories />
         <BrandSlider />
-        <Features />
         <MapSection />
       </main>
       <Footer />
