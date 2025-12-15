@@ -1,3 +1,5 @@
+import { ChevronUp } from "lucide-react";
+
 const categories = [
   { name: "PIATRĂ FLEXIBILĂ", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=150&h=100&fit=crop" },
   { name: "VOPSELE PE BAZĂ DE CAUCIUC", image: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=150&h=100&fit=crop" },
@@ -7,40 +9,70 @@ const categories = [
   { name: "GRESIE ȘI FAIANȚĂ", image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=150&h=100&fit=crop" },
   { name: "MATERIALE DE FINISARE", image: "https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=150&h=100&fit=crop" },
   { name: "ACOPERIRI PENTRU PODEA ȘI PEREȚI", image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=150&h=100&fit=crop" },
-  { name: "UȘI", image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?w=150&h=100&fit=crop" },
-  { name: "TEHNICĂ SANITARĂ", image: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=150&h=100&fit=crop" },
-  { name: "ECHIPAMENTE ELECTRICE ȘI ACCESORII", image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=150&h=100&fit=crop" },
-  { name: "CORPURI ȘI SURSE DE ILUMINAT", image: "https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=150&h=100&fit=crop" },
 ];
 
 const PopularCategories = () => {
   return (
-    <section className="py-8 bg-white">
+    <section className="py-8 md:py-12">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="verix-section-title text-verix-blue">
-            CATEGORII<span className="text-verix-yellow"> POPULARE</span>
+          <h2 className="buildings-section-title">
+            <span className="text-primary italic">CATEGORII</span>
+            <span className="text-accent italic"> POPULARE</span>
           </h2>
-          <button className="border border-verix-gray-dark px-4 py-2 text-sm font-medium text-verix-text hover:bg-verix-gray transition-colors uppercase">
+          <button className="hidden md:block buildings-btn-outline">
             Vezi mai multe
           </button>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {/* Mobile: Vertical Stack */}
+        <div className="md:hidden space-y-3">
           {categories.map((category, index) => (
             <a
               key={index}
               href="#"
-              className="flex items-center gap-3 border border-verix-blue p-3 hover:bg-verix-gray transition-colors group"
+              className="flex items-center gap-4 bg-card border border-border p-4 rounded-2xl hover:shadow-soft transition-all group"
             >
-              <span className="text-verix-blue text-xs font-bold uppercase flex-1 group-hover:text-verix-blue-dark">
+              <span className="text-primary text-sm font-bold uppercase flex-1 group-hover:text-primary/80 transition-colors">
                 {category.name}
               </span>
-              <div className="w-20 h-14 flex-shrink-0 overflow-hidden">
+              <div className="w-24 h-16 flex-shrink-0 overflow-hidden rounded-xl">
                 <img
                   src={category.image}
                   alt={category.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </a>
+          ))}
+          
+          {/* Mobile View More */}
+          <div className="flex items-center justify-end gap-4 pt-2">
+            <button className="buildings-btn-outline flex-1">
+              VEZI MAI MULTE
+            </button>
+            <button className="w-14 h-14 rounded-full bg-card border-2 border-primary text-primary flex items-center justify-center shadow-lg hover:bg-primary hover:text-primary-foreground transition-all">
+              <ChevronUp size={24} />
+            </button>
+          </div>
+        </div>
+
+        {/* Desktop: Grid */}
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {categories.map((category, index) => (
+            <a
+              key={index}
+              href="#"
+              className="flex items-center gap-3 bg-card border border-border p-4 rounded-2xl hover:shadow-card hover:-translate-y-1 transition-all group"
+            >
+              <span className="text-primary text-xs font-bold uppercase flex-1 group-hover:text-primary/80 transition-colors">
+                {category.name}
+              </span>
+              <div className="w-20 h-14 flex-shrink-0 overflow-hidden rounded-xl">
+                <img
+                  src={category.image}
+                  alt={category.name}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
             </a>

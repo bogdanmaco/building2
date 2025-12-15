@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Building2, Paintbrush, LayoutGrid, DoorOpen, Bath, Droplets, Flame, Zap, Lightbulb, Wrench, Hammer, Package, Shirt, CircleDot, Home, Heater, Blinds, Trees, Fuel, Gift } from "lucide-react";
+import { Building2, Paintbrush, LayoutGrid, DoorOpen, Bath, Droplets, Flame, Zap, Lightbulb, Wrench, Hammer, Package, Shirt, CircleDot, Home, Heater, Blinds, Trees, Fuel, Gift, X } from "lucide-react";
 
 interface Category {
   id: string;
@@ -11,6 +11,10 @@ interface Category {
 interface Subcategory {
   name: string;
   image?: string;
+}
+
+interface MegaMenuProps {
+  onClose?: () => void;
 }
 
 const categories: Category[] = [
@@ -81,10 +85,6 @@ const categories: Category[] = [
       { name: "Sisteme de canalizare" },
       { name: "Robinete" },
       { name: "Fitinguri pentru țevi" },
-      { name: "Fir pentru etanșare, bandă teflon, garnituri" },
-      { name: "Ventilatoare" },
-      { name: "Tuburi de izolare" },
-      { name: "Radiatoare" },
     ],
   },
   {
@@ -99,7 +99,7 @@ const categories: Category[] = [
   },
   {
     id: "8",
-    name: "ECHIPAMENTE ELECTRICE ȘI ACCESORII",
+    name: "ECHIPAMENTE ELECTRICE",
     icon: Zap,
     subcategories: [
       { name: "Prize și întrerupătoare" },
@@ -109,7 +109,7 @@ const categories: Category[] = [
   },
   {
     id: "9",
-    name: "CORPURI ȘI SURSE DE ILUMINAT",
+    name: "CORPURI DE ILUMINAT",
     icon: Lightbulb,
     subcategories: [
       { name: "Lustre" },
@@ -120,7 +120,7 @@ const categories: Category[] = [
   },
   {
     id: "10",
-    name: "INSTRUMENTE ELECTRICE ȘI PNEUMATICE",
+    name: "INSTRUMENTE ELECTRICE",
     icon: Wrench,
     subcategories: [
       { name: "Bormasini" },
@@ -141,7 +141,7 @@ const categories: Category[] = [
   },
   {
     id: "12",
-    name: "MATERIALE CONSUMABILE ȘI ACCESORII",
+    name: "MATERIALE CONSUMABILE",
     icon: Package,
     subcategories: [
       { name: "Șuruburi și cuie" },
@@ -149,128 +149,66 @@ const categories: Category[] = [
       { name: "Bandă adezivă" },
     ],
   },
-  {
-    id: "13",
-    name: "ÎMBRĂCĂMINTE DE LUCRU",
-    icon: Shirt,
-    subcategories: [
-      { name: "Salopete" },
-      { name: "Mănuși" },
-      { name: "Încălțăminte de protecție" },
-    ],
-  },
-  {
-    id: "14",
-    name: "ELEMENTE DE FIXARE",
-    icon: CircleDot,
-    subcategories: [
-      { name: "Ancore" },
-      { name: "Bride" },
-      { name: "Cleme" },
-    ],
-  },
-  {
-    id: "15",
-    name: "MĂRFURI DE UZ CASNIC",
-    icon: Home,
-    subcategories: [
-      { name: "Ustensile bucătărie" },
-      { name: "Articole curățenie" },
-    ],
-  },
-  {
-    id: "16",
-    name: "ȘEMINEE",
-    icon: Heater,
-    subcategories: [
-      { name: "Șeminee electrice" },
-      { name: "Șeminee pe lemne" },
-    ],
-  },
-  {
-    id: "17",
-    name: "JALUZELE",
-    icon: Blinds,
-    subcategories: [
-      { name: "Jaluzele verticale" },
-      { name: "Jaluzele orizontale" },
-      { name: "Rolete" },
-    ],
-  },
-  {
-    id: "18",
-    name: "INVENTAR ȘI ELEMENTE DE GRĂDINĂ, ZDROBITOR",
-    icon: Trees,
-    subcategories: [
-      { name: "Unelte grădină" },
-      { name: "Zdrobitoare struguri" },
-      { name: "Teascuri" },
-    ],
-  },
-  {
-    id: "19",
-    name: "CĂRBUNE, LEMNE, BRICHETE, PELETE",
-    icon: Fuel,
-    subcategories: [
-      { name: "Cărbune" },
-      { name: "Lemne de foc" },
-      { name: "Brichete" },
-      { name: "Pelete" },
-    ],
-  },
-  {
-    id: "20",
-    name: "CERTIFICAT CADOU",
-    icon: Gift,
-    subcategories: [],
-  },
 ];
 
-const MegaMenu = () => {
+const MegaMenu = ({ onClose }: MegaMenuProps) => {
   const [activeCategory, setActiveCategory] = useState<string | null>("6");
 
   const activeCat = categories.find((c) => c.id === activeCategory);
 
   return (
     <div className="max-w-7xl mx-auto px-4">
-      <div className="flex bg-white border border-verix-gray-dark shadow-lg">
+      <div className="flex bg-card rounded-2xl shadow-card overflow-hidden border border-border">
         {/* Left Column - Categories */}
-        <div className="w-72 bg-verix-blue">
-          {categories.map((category) => {
-            const Icon = category.icon;
-            return (
-              <div
-                key={category.id}
-                className={`flex items-center gap-3 px-4 py-2 cursor-pointer text-white text-xs uppercase font-medium border-b border-white/10 transition-colors ${
-                  activeCategory === category.id
-                    ? "bg-white text-verix-blue"
-                    : "hover:bg-verix-blue-dark"
-                }`}
-                onMouseEnter={() => setActiveCategory(category.id)}
+        <div className="w-72 bg-primary rounded-l-2xl">
+          <div className="flex items-center justify-between px-4 py-3 border-b border-primary-foreground/20">
+            <span className="text-primary-foreground font-semibold text-sm">Categorii</span>
+            {onClose && (
+              <button 
+                onClick={onClose}
+                className="lg:hidden text-primary-foreground hover:text-accent transition-colors"
               >
-                <Icon size={16} className={activeCategory === category.id ? "text-verix-blue" : "text-white"} />
-                <span className={activeCategory === category.id ? "text-verix-blue" : "text-white"}>
-                  {category.name}
-                </span>
-              </div>
-            );
-          })}
+                <X size={20} />
+              </button>
+            )}
+          </div>
+          <div className="max-h-[60vh] overflow-y-auto">
+            {categories.map((category) => {
+              const Icon = category.icon;
+              return (
+                <div
+                  key={category.id}
+                  className={`flex items-center gap-3 px-4 py-3 cursor-pointer text-xs uppercase font-medium transition-all ${
+                    activeCategory === category.id
+                      ? "bg-card text-primary rounded-l-xl"
+                      : "text-primary-foreground hover:bg-primary-foreground/10"
+                  }`}
+                  onMouseEnter={() => setActiveCategory(category.id)}
+                  onClick={() => setActiveCategory(category.id)}
+                >
+                  <Icon size={16} />
+                  <span className="line-clamp-1">{category.name}</span>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Right Column - Subcategories */}
         {activeCat && activeCat.subcategories.length > 0 && (
-          <div className="flex-1 p-6 bg-white min-h-[400px]">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="flex-1 p-6 bg-card min-h-[400px]">
+            <h3 className="text-primary font-bold text-lg mb-4">{activeCat.name}</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
               {activeCat.subcategories.map((sub, index) => (
                 <a
                   key={index}
                   href="#"
-                  className="flex items-center gap-3 p-3 hover:bg-verix-gray transition-colors border border-verix-gray"
+                  className="flex items-center gap-3 p-4 hover:bg-muted transition-colors rounded-xl border border-border hover:border-primary/30 group"
                 >
-                  <div className="w-12 h-12 bg-verix-gray flex items-center justify-center">
-                    <Package size={20} className="text-muted-foreground" />
+                  <div className="w-12 h-12 bg-buildings-blue-light rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <Package size={20} className="text-primary" />
                   </div>
-                  <span className="text-verix-blue text-sm font-medium uppercase">
+                  <span className="text-foreground text-sm font-medium group-hover:text-primary transition-colors">
                     {sub.name}
                   </span>
                 </a>

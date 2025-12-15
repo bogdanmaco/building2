@@ -21,43 +21,43 @@ const ProductCard = ({
   unit = "MDL / buc",
 }: ProductCardProps) => {
   return (
-    <div className="bg-white border border-verix-gray-dark p-4 relative group">
+    <div className="bg-card rounded-2xl p-4 relative group hover:shadow-card transition-all duration-300 border border-border">
       {/* Discount Badge */}
       {discount && (
-        <div className="absolute top-2 right-2 bg-verix-red text-white px-2 py-1 text-xs font-bold z-10">
+        <div className="absolute top-3 right-3 bg-destructive text-destructive-foreground px-3 py-1.5 text-xs font-bold z-10 rounded-lg shadow-md">
           -{discount}%
         </div>
       )}
 
       {/* Top Badge */}
       {isTop && (
-        <div className="absolute top-2 left-2 bg-verix-blue text-white px-2 py-1 text-xs font-bold z-10">
+        <div className="absolute top-3 left-3 bg-primary text-primary-foreground px-3 py-1.5 text-xs font-bold z-10 rounded-lg shadow-md">
           TOP
         </div>
       )}
 
       {/* Image */}
-      <div className="aspect-square mb-4 flex items-center justify-center overflow-hidden bg-white">
+      <div className="aspect-square mb-4 flex items-center justify-center overflow-hidden bg-muted rounded-xl">
         <img
           src={image}
           alt={name}
-          className="max-w-full max-h-full object-contain"
+          className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-300"
         />
       </div>
 
       {/* Title */}
-      <h3 className="text-verix-text text-sm font-medium mb-3 line-clamp-2 min-h-[40px] uppercase">
+      <h3 className="text-foreground text-sm font-semibold mb-3 line-clamp-2 min-h-[44px]">
         {name}
       </h3>
 
       {/* Price */}
-      <div className="mb-3">
+      <div className="mb-4">
         {oldPrice && (
           <div className="text-muted-foreground text-sm line-through">
             {oldPrice.toLocaleString("ro-MD")} MDL
           </div>
         )}
-        <div className={`text-lg font-bold ${discount ? "text-verix-red" : "text-verix-text"}`}>
+        <div className={`text-xl font-bold ${discount ? "text-destructive" : "text-foreground"}`}>
           {price.toLocaleString("ro-MD")}{" "}
           <span className="text-xs font-normal text-muted-foreground">{unit}</span>
         </div>
@@ -65,12 +65,12 @@ const ProductCard = ({
 
       {/* Actions */}
       <div className="flex items-center gap-2">
-        <button className="flex-1 flex items-center justify-center gap-2 bg-verix-blue text-white py-2 px-3 text-xs font-medium uppercase hover:bg-verix-blue-dark transition-colors">
-          <ShoppingCart size={14} />
+        <button className="flex-1 flex items-center justify-center gap-2 bg-accent text-accent-foreground py-3 px-4 text-sm font-semibold rounded-xl hover:bg-yellow-400 transition-all duration-200 shadow-sm hover:shadow-md">
+          <ShoppingCart size={16} />
           ÎN COȘ
         </button>
-        <button className="w-9 h-9 flex items-center justify-center border border-verix-gray-dark text-muted-foreground hover:text-verix-red hover:border-verix-red transition-colors">
-          <Heart size={16} />
+        <button className="w-12 h-12 flex items-center justify-center border-2 border-border text-muted-foreground hover:text-destructive hover:border-destructive transition-colors rounded-xl">
+          <Heart size={20} />
         </button>
       </div>
     </div>
