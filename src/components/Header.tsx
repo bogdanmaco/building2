@@ -1,5 +1,6 @@
 import { Phone, User, Heart, ShoppingCart, ChevronDown, Menu, Search, X, Building2 } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import MegaMenu from "./MegaMenu";
 
 const Header = () => {
@@ -21,8 +22,8 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-8">
-            <a href="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center">
+            <Link to="/" className="flex items-center gap-2">
+              <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center">
                 <Building2 className="text-primary-foreground" size={24} />
               </div>
               <div className="flex flex-col">
@@ -33,7 +34,7 @@ const Header = () => {
                   Materiale de construcții
                 </span>
               </div>
-            </a>
+            </Link>
 
             {/* Nav Links */}
             <nav className="hidden xl:flex items-center gap-6">
@@ -66,28 +67,9 @@ const Header = () => {
             </div>
 
             {/* Language */}
-            <button className="flex items-center gap-1 bg-primary text-primary-foreground px-3 py-1.5 text-xs font-semibold rounded-lg hover:bg-primary/90 transition-colors">
+            <button className="flex items-center gap-1 bg-primary text-primary-foreground px-3 py-1.5 text-xs font-semibold hover:bg-primary/90 transition-colors">
               RO <ChevronDown size={12} />
             </button>
-
-            {/* User Actions */}
-            <div className="flex items-center gap-3">
-              <button className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-colors">
-                <User size={20} />
-              </button>
-              <button className="relative w-10 h-10 rounded-xl bg-muted flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-colors">
-                <Heart size={20} />
-                <span className="absolute -top-1 -right-1 bg-accent text-accent-foreground text-[10px] w-5 h-5 flex items-center justify-center font-bold rounded-full">
-                  0
-                </span>
-              </button>
-              <button className="relative w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-primary-foreground hover:bg-primary/90 transition-colors">
-                <ShoppingCart size={20} />
-                <span className="absolute -top-1 -right-1 bg-accent text-accent-foreground text-[10px] w-5 h-5 flex items-center justify-center font-bold rounded-full">
-                  0
-                </span>
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -96,25 +78,25 @@ const Header = () => {
       <div className="lg:hidden bg-primary shadow-soft">
         {/* Top Row */}
         <div className="flex items-center justify-between px-4 py-3">
-          <a href="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 bg-primary-foreground rounded-xl flex items-center justify-center">
+          <Link to="/" className="flex items-center gap-2">
+            <div className="w-9 h-9 bg-primary-foreground flex items-center justify-center">
               <Building2 className="text-primary" size={20} />
             </div>
             <span className="text-primary-foreground font-extrabold text-lg">
               BUILDINGS<span className="text-accent">.MD</span>
             </span>
-          </a>
+          </Link>
 
           <div className="flex items-center gap-2">
-            <button className="flex items-center gap-1 bg-primary-foreground text-primary px-2.5 py-1.5 text-xs font-semibold rounded-lg">
+            <button className="flex items-center gap-1 bg-primary-foreground text-primary px-2.5 py-1.5 text-xs font-semibold">
               RO <ChevronDown size={12} />
             </button>
-            <a href="tel:+37368455555" className="w-10 h-10 rounded-xl bg-primary-foreground/20 flex items-center justify-center text-primary-foreground">
+            <a href="tel:+37368455555" className="w-10 h-10 bg-primary-foreground/20 flex items-center justify-center text-primary-foreground">
               <Phone size={20} />
             </a>
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="w-10 h-10 rounded-xl bg-primary-foreground flex items-center justify-center text-primary"
+              className="w-10 h-10 bg-primary-foreground flex items-center justify-center text-primary"
             >
               {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -124,7 +106,7 @@ const Header = () => {
         {/* Catalog & Search Row */}
         <div className="px-4 pb-3 flex items-center gap-3">
           <button
-            className="flex items-center gap-2 bg-primary-foreground text-primary px-4 py-3 rounded-xl font-semibold text-sm shrink-0"
+            className="flex items-center gap-2 bg-primary-foreground text-primary px-4 py-3 font-semibold text-sm shrink-0"
             onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
           >
             <Menu size={18} />
@@ -132,7 +114,7 @@ const Header = () => {
           </button>
 
           {/* Search Input */}
-          <div className="flex-1 flex bg-primary-foreground rounded-xl overflow-hidden">
+          <div className="flex-1 flex bg-primary-foreground overflow-hidden">
             <input
               type="text"
               placeholder="Caută produse"
@@ -150,7 +132,7 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center gap-4">
           {/* Catalog Button */}
           <button
-            className="flex items-center gap-2 bg-primary-foreground text-primary px-5 py-3 hover:bg-accent hover:text-accent-foreground transition-colors font-semibold text-sm rounded-xl shadow-md"
+            className="flex items-center gap-2 bg-primary-foreground text-primary px-5 py-3 hover:bg-accent hover:text-accent-foreground transition-colors font-semibold text-sm shadow-md"
             onMouseEnter={() => setIsMegaMenuOpen(true)}
             onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
           >
@@ -159,7 +141,7 @@ const Header = () => {
           </button>
 
           {/* Search Input */}
-          <div className="flex-1 flex bg-card rounded-xl overflow-hidden shadow-md">
+          <div className="flex-1 flex bg-card overflow-hidden shadow-md">
             <input
               type="text"
               placeholder="Caută produse..."
@@ -174,23 +156,23 @@ const Header = () => {
           </div>
 
           {/* Right Icons (Desktop) */}
-          <div className="hidden xl:flex items-center gap-4 text-primary-foreground">
-            <a href="#" className="flex items-center gap-2 hover:text-accent transition-colors">
+          <div className="flex items-center gap-4 text-primary-foreground">
+            <Link to="/cont" className="flex items-center gap-2 hover:text-accent transition-colors">
               <User size={20} />
               <span className="text-sm font-medium">Intră în cont</span>
-            </a>
-            <button className="relative hover:text-accent transition-colors">
+            </Link>
+            <Link to="/favorite" className="relative hover:text-accent transition-colors">
               <Heart size={20} />
-              <span className="absolute -top-2 -right-2 bg-accent text-accent-foreground text-[10px] w-5 h-5 flex items-center justify-center font-bold rounded-full">
+              <span className="absolute -top-2 -right-2 bg-accent text-accent-foreground text-[10px] w-5 h-5 flex items-center justify-center font-bold">
                 0
               </span>
-            </button>
-            <button className="relative hover:text-accent transition-colors">
+            </Link>
+            <Link to="/cos" className="relative hover:text-accent transition-colors">
               <ShoppingCart size={20} />
-              <span className="absolute -top-2 -right-2 bg-accent text-accent-foreground text-[10px] w-5 h-5 flex items-center justify-center font-bold rounded-full">
+              <span className="absolute -top-2 -right-2 bg-accent text-accent-foreground text-[10px] w-5 h-5 flex items-center justify-center font-bold">
                 0
               </span>
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -213,14 +195,14 @@ const Header = () => {
               <a
                 key={link.label}
                 href={link.href}
-                className="block px-4 py-3 text-foreground text-base font-medium hover:bg-muted rounded-xl transition-colors"
+                className="block px-4 py-3 text-foreground text-base font-medium hover:bg-muted transition-colors"
               >
                 {link.label}
               </a>
             ))}
             <a
               href="#"
-              className="block px-4 py-3 text-buildings-orange text-base font-semibold rounded-xl"
+              className="block px-4 py-3 text-buildings-orange text-base font-semibold"
             >
               % Promoții
             </a>
