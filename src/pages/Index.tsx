@@ -7,6 +7,7 @@ import BrandSlider from "@/components/BrandSlider";
 import Features from "@/components/Features";
 import MapSection from "@/components/MapSection";
 import Footer from "@/components/Footer";
+import MobileBottomDock from "@/components/MobileBottomDock";
 
 const newProducts = [
   { id: 1, name: "BOILER HYUNDAI 80L 2000W HYW...", price: 4899, image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=300&h=300&fit=crop" },
@@ -28,7 +29,7 @@ const topProducts = [
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-20 lg:pb-0">
       <Header />
       <main>
         <HeroSlider />
@@ -51,6 +52,7 @@ const Index = () => {
         <MapSection />
       </main>
       <Footer />
+      <MobileBottomDock />
     </div>
   );
 };

@@ -93,28 +93,28 @@ const Header = () => {
       </div>
 
       {/* Mobile Header */}
-      <div className="lg:hidden bg-card shadow-soft">
+      <div className="lg:hidden bg-primary shadow-soft">
         {/* Top Row */}
         <div className="flex items-center justify-between px-4 py-3">
           <a href="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center">
-              <Building2 className="text-primary-foreground" size={20} />
+            <div className="w-9 h-9 bg-primary-foreground rounded-xl flex items-center justify-center">
+              <Building2 className="text-primary" size={20} />
             </div>
-            <span className="text-primary font-extrabold text-lg">
+            <span className="text-primary-foreground font-extrabold text-lg">
               BUILDINGS<span className="text-accent">.MD</span>
             </span>
           </a>
 
           <div className="flex items-center gap-2">
-            <button className="flex items-center gap-1 bg-primary text-primary-foreground px-2.5 py-1.5 text-xs font-semibold rounded-lg">
+            <button className="flex items-center gap-1 bg-primary-foreground text-primary px-2.5 py-1.5 text-xs font-semibold rounded-lg">
               RO <ChevronDown size={12} />
             </button>
-            <a href="tel:+37368455555" className="w-10 h-10 rounded-xl bg-buildings-blue-light flex items-center justify-center text-primary">
+            <a href="tel:+37368455555" className="w-10 h-10 rounded-xl bg-primary-foreground/20 flex items-center justify-center text-primary-foreground">
               <Phone size={20} />
             </a>
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-primary-foreground"
+              className="w-10 h-10 rounded-xl bg-primary-foreground flex items-center justify-center text-primary"
             >
               {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -124,7 +124,7 @@ const Header = () => {
         {/* Catalog & Search Row */}
         <div className="px-4 pb-3 flex items-center gap-3">
           <button
-            className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-3 rounded-xl font-semibold text-sm shrink-0"
+            className="flex items-center gap-2 bg-primary-foreground text-primary px-4 py-3 rounded-xl font-semibold text-sm shrink-0"
             onClick={() => setIsMegaMenuOpen(!isMegaMenuOpen)}
           >
             <Menu size={18} />
@@ -132,34 +132,16 @@ const Header = () => {
           </button>
 
           {/* Search Input */}
-          <div className="flex-1 flex bg-card border border-border rounded-xl overflow-hidden">
+          <div className="flex-1 flex bg-primary-foreground rounded-xl overflow-hidden">
             <input
               type="text"
               placeholder="Caută produse"
-              className="flex-1 px-4 py-3 text-sm bg-transparent border-0 focus:outline-none"
+              className="flex-1 px-4 py-3 text-sm bg-transparent border-0 focus:outline-none text-foreground"
             />
             <button className="px-4 text-primary">
               <Search size={20} />
             </button>
           </div>
-        </div>
-
-        {/* Mobile Action Bar */}
-        <div className="flex items-center justify-around border-t border-border py-2 bg-muted/50">
-          <a href="#" className="flex flex-col items-center gap-1 text-primary">
-            <User size={22} />
-            <span className="text-[10px] font-medium">Cont</span>
-          </a>
-          <a href="#" className="flex flex-col items-center gap-1 text-primary relative">
-            <Heart size={22} />
-            <span className="absolute -top-1 right-1/2 translate-x-4 bg-accent text-accent-foreground text-[9px] w-4 h-4 flex items-center justify-center font-bold rounded-full">0</span>
-            <span className="text-[10px] font-medium">Favorite</span>
-          </a>
-          <a href="#" className="flex flex-col items-center gap-1 text-primary relative">
-            <ShoppingCart size={22} />
-            <span className="absolute -top-1 right-1/2 translate-x-4 bg-accent text-accent-foreground text-[9px] w-4 h-4 flex items-center justify-center font-bold rounded-full">0</span>
-            <span className="text-[10px] font-medium">Coș</span>
-          </a>
         </div>
       </div>
 

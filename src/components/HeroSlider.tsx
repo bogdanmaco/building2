@@ -64,7 +64,7 @@ const HeroSlider = () => {
   };
 
   return (
-    <div className="relative w-full h-[280px] md:h-[400px] overflow-hidden rounded-none md:rounded-3xl md:mx-4 md:mt-4 md:max-w-7xl md:mx-auto">
+    <div className="relative w-full h-[300px] md:h-[400px] overflow-hidden md:rounded-3xl md:mx-4 md:mt-4 md:max-w-7xl md:mx-auto">
       {slides.map((slide, index) => (
         <div
           key={slide.id}
@@ -76,10 +76,10 @@ const HeroSlider = () => {
             {/* Left Content */}
             <div className="flex-1 z-10">
               <div className="max-w-lg">
-                <h2 className="text-3xl md:text-5xl font-extrabold text-primary leading-tight">
+                <h2 className="text-2xl md:text-5xl font-extrabold text-primary leading-tight">
                   {slide.title}
                 </h2>
-                <h2 className="text-3xl md:text-5xl font-extrabold text-foreground leading-tight">
+                <h2 className="text-2xl md:text-5xl font-extrabold text-foreground leading-tight">
                   {slide.subtitle}
                 </h2>
                 <p className="text-muted-foreground text-sm md:text-base mt-4 max-w-md">
@@ -91,13 +91,12 @@ const HeroSlider = () => {
               </div>
             </div>
 
-            {/* Right - Brand Badge */}
-            <div className="hidden md:flex flex-col items-end justify-center">
-              <div className="text-right">
-                <div className={`w-16 h-16 ${slide.accentColor} rounded-2xl flex items-center justify-center mb-4 shadow-lg`}>
-                  <Building2 className="text-white" size={32} />
+            {/* Right - Image placeholder area */}
+            <div className="hidden md:flex flex-1 items-center justify-center">
+              <div className="w-64 h-64 bg-white/30 rounded-3xl flex items-center justify-center">
+                <div className={`w-20 h-20 ${slide.accentColor} rounded-2xl flex items-center justify-center shadow-lg`}>
+                  <Building2 className="text-white" size={40} />
                 </div>
-                <span className="text-foreground font-bold text-lg">{slide.brand}</span>
               </div>
             </div>
           </div>

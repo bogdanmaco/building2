@@ -70,33 +70,33 @@ const SalesSection = () => {
               {/* Left: Text Content */}
               <div className="flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-foreground text-base font-bold mb-2 leading-tight">
+                  <h3 className="text-foreground text-sm font-bold mb-2 leading-tight">
                     {product.name}
                   </h3>
-                  <div className="text-destructive text-2xl font-bold">
-                    {product.price.toLocaleString("ro-MD")} <span className="text-sm">MDL</span>
-                    <span className="text-muted-foreground text-sm font-normal block">/ buc</span>
+                  <div className="text-destructive text-xl font-bold">
+                    {product.price.toLocaleString("ro-MD")} <span className="text-xs">MDL</span>
+                    <span className="text-muted-foreground text-xs font-normal block">/ buc</span>
                   </div>
-                  <div className="text-muted-foreground text-sm line-through mt-1">
+                  <div className="text-muted-foreground text-xs line-through mt-1">
                     {product.oldPrice.toLocaleString("ro-MD")} MDL / buc
                   </div>
                 </div>
                 
                 {/* Actions */}
                 <div className="flex items-center gap-2 mt-4">
-                  <button className="flex items-center justify-center gap-2 bg-accent text-accent-foreground py-3 px-5 text-sm font-semibold rounded-xl hover:bg-yellow-400 transition-all">
+                  <button className="flex items-center justify-center gap-2 bg-accent text-accent-foreground py-2.5 px-4 text-sm font-semibold rounded-xl hover:bg-yellow-400 transition-all">
                     <ShoppingCart size={16} />
                     ÎN COȘ
                   </button>
-                  <button className="w-12 h-12 flex items-center justify-center border-2 border-border text-muted-foreground hover:text-destructive hover:border-destructive transition-colors rounded-xl">
-                    <Heart size={20} />
+                  <button className="w-10 h-10 flex items-center justify-center border-2 border-border text-muted-foreground hover:text-destructive hover:border-destructive transition-colors rounded-xl">
+                    <Heart size={18} />
                   </button>
                 </div>
               </div>
               
               {/* Right: Image with Badge */}
-              <div className="w-32 h-32 relative flex-shrink-0">
-                <div className="absolute top-0 right-0 bg-destructive text-destructive-foreground px-3 py-1.5 text-sm font-bold z-10 rounded-lg shadow-md">
+              <div className="w-28 h-28 relative flex-shrink-0">
+                <div className="absolute top-0 right-0 bg-destructive text-destructive-foreground px-2 py-1 text-xs font-bold z-10 rounded-lg shadow-md">
                   -{product.discount}%
                 </div>
                 <div className="w-full h-full bg-muted rounded-xl overflow-hidden">
@@ -121,7 +121,7 @@ const SalesSection = () => {
           </div>
         </div>
 
-        {/* Desktop: Grid Layout */}
+        {/* Desktop: Grid Layout - with rounded corners */}
         <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6">
           {salesProducts.map((product) => (
             <div 
@@ -152,7 +152,7 @@ const SalesSection = () => {
                 <div className="text-muted-foreground text-sm line-through">
                   {product.oldPrice.toLocaleString("ro-MD")} MDL
                 </div>
-                <div className="text-xl font-bold text-destructive">
+                <div className="text-lg font-bold text-destructive">
                   {product.price.toLocaleString("ro-MD")}{" "}
                   <span className="text-xs font-normal text-muted-foreground">MDL / buc</span>
                 </div>
