@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 210 20% 98%;
     --foreground: 220 30% 15%;
 
     --card: 0 0% 100%;
@@ -15,7 +15,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 30% 15%;
 
-    --primary: 216 60% 28%;
+    --primary: 216 80% 45%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 220 15% 96%;
@@ -27,23 +27,28 @@
     --accent: 45 100% 50%;
     --accent-foreground: 220 30% 15%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 84% 55%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 220 15% 90%;
     --input: 220 15% 90%;
-    --ring: 216 60% 28%;
+    --ring: 216 80% 45%;
 
-    --radius: 0px;
+    --radius: 12px;
 
-    /* Verix specific colors */
-    --verix-blue: 216 60% 28%;
-    --verix-blue-dark: 216 70% 20%;
-    --verix-yellow: 45 100% 50%;
-    --verix-gray: 220 15% 96%;
-    --verix-gray-dark: 220 10% 85%;
-    --verix-text: 220 30% 15%;
-    --verix-red: 0 80% 50%;
+    /* Buildings.md brand colors */
+    --buildings-blue: 216 80% 45%;
+    --buildings-blue-dark: 216 85% 35%;
+    --buildings-blue-light: 216 70% 95%;
+    --buildings-yellow: 45 100% 50%;
+    --buildings-yellow-light: 45 100% 90%;
+    --buildings-orange: 25 95% 55%;
+    --buildings-gray: 220 15% 96%;
+    --buildings-gray-dark: 220 10% 85%;
+    --buildings-text: 220 30% 15%;
+    --buildings-red: 0 85% 55%;
+    --buildings-green: 145 70% 45%;
+    --buildings-purple: 270 65% 55%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -98,54 +103,58 @@
 @layer base {
   * {
     @apply border-border;
-    border-radius: 0 !important;
   }
 
   body {
-    @apply bg-background text-foreground font-roboto;
-  }
-
-  /* Force no border radius globally */
-  *, *::before, *::after {
-    border-radius: 0 !important;
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
   }
 }
 
 @layer components {
-  .verix-btn {
-    @apply bg-verix-blue text-white px-4 py-2 font-medium uppercase text-sm tracking-wide;
-    @apply hover:bg-verix-blue-dark transition-colors duration-200;
-    border-radius: 0 !important;
+  .buildings-btn {
+    @apply bg-primary text-primary-foreground px-6 py-3 font-semibold text-sm tracking-wide rounded-xl;
+    @apply hover:bg-primary/90 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5;
   }
 
-  .verix-btn-yellow {
-    @apply bg-verix-yellow text-verix-text px-4 py-2 font-medium uppercase text-sm tracking-wide;
-    @apply hover:bg-yellow-400 transition-colors duration-200;
-    border-radius: 0 !important;
+  .buildings-btn-yellow {
+    @apply bg-accent text-accent-foreground px-6 py-3 font-semibold text-sm tracking-wide rounded-xl;
+    @apply hover:bg-yellow-400 transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5;
   }
 
-  .verix-card {
-    @apply bg-white border border-verix-gray-dark p-4;
-    border-radius: 0 !important;
+  .buildings-btn-outline {
+    @apply border-2 border-primary text-primary px-6 py-3 font-semibold text-sm tracking-wide rounded-xl;
+    @apply hover:bg-primary hover:text-primary-foreground transition-all duration-300;
   }
 
-  .verix-input {
-    @apply border border-verix-gray-dark px-3 py-2 bg-white;
-    @apply focus:outline-none focus:border-verix-blue;
-    border-radius: 0 !important;
+  .buildings-card {
+    @apply bg-card border border-border p-4 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300;
   }
 
-  .verix-section-title {
-    @apply text-2xl font-bold uppercase tracking-wide;
+  .buildings-input {
+    @apply border border-border px-4 py-3 bg-card rounded-xl;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200;
   }
 
-  .verix-section-title span {
-    @apply text-verix-yellow;
+  .buildings-section-title {
+    @apply text-2xl md:text-3xl font-bold tracking-tight;
+  }
+
+  .buildings-section-title span {
+    @apply text-accent;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent;
   }
 }
 
 @layer utilities {
-  .no-radius {
-    border-radius: 0 !important;
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-lg;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-1 hover:shadow-xl transition-all duration-300;
   }
 }

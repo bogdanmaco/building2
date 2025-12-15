@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Building2 } from "lucide-react";
 
 interface Slide {
   id: number;
@@ -7,33 +7,37 @@ interface Slide {
   subtitle: string;
   description: string;
   brand: string;
-  bgColor: string;
+  bgGradient: string;
+  accentColor: string;
 }
 
 const slides: Slide[] = [
   {
     id: 1,
-    title: "Dă liniștea",
-    subtitle: "mai tare!",
-    description: "ALEGE Rigips® Fonic, PLACA CU MIEZ DENS, CARE BLOCEAZĂ ZGOMOTUL!",
+    title: "Descoperă vata",
+    subtitle: "minerală de sticlă Isover",
+    description: "Alege Isover Super Profi pentru case eficiente energetic.",
     brand: "SAINT-GOBAIN",
-    bgColor: "bg-gradient-to-r from-cyan-100 via-cyan-50 to-white",
+    bgGradient: "from-emerald-100 via-emerald-50 to-white",
+    accentColor: "bg-emerald-500",
   },
   {
     id: 2,
     title: "Materiale",
-    subtitle: "de calitate!",
-    description: "Cele mai bune materiale de construcție pentru proiectele tale",
-    brand: "VERIX-GRUP",
-    bgColor: "bg-gradient-to-r from-blue-100 via-blue-50 to-white",
+    subtitle: "de top calitate!",
+    description: "Cele mai bune materiale de construcție pentru proiectele tale ambițioase.",
+    brand: "BUILDINGS.MD",
+    bgGradient: "from-blue-100 via-blue-50 to-white",
+    accentColor: "bg-primary",
   },
   {
     id: 3,
-    title: "Reduceri",
-    subtitle: "speciale!",
-    description: "Profită de ofertele noastre exclusive pentru materiale de construcție",
-    brand: "VERIX-GRUP",
-    bgColor: "bg-gradient-to-r from-yellow-100 via-yellow-50 to-white",
+    title: "Super",
+    subtitle: "Reduceri!",
+    description: "Profită de ofertele noastre exclusive pentru materiale de construcție.",
+    brand: "BUILDINGS.MD",
+    bgGradient: "from-amber-100 via-amber-50 to-white",
+    accentColor: "bg-accent",
   },
 ];
 
@@ -60,56 +64,42 @@ const HeroSlider = () => {
   };
 
   return (
-    <div className="relative w-full h-[350px] md:h-[400px] overflow-hidden">
+    <div className="relative w-full h-[280px] md:h-[400px] overflow-hidden rounded-none md:rounded-3xl md:mx-4 md:mt-4 md:max-w-7xl md:mx-auto">
       {slides.map((slide, index) => (
         <div
           key={slide.id}
-          className={`absolute inset-0 transition-opacity duration-500 ${
-            index === currentSlide ? "opacity-100" : "opacity-0"
-          } ${slide.bgColor}`}
+          className={`absolute inset-0 transition-all duration-700 ${
+            index === currentSlide ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full"
+          } bg-gradient-to-r ${slide.bgGradient}`}
         >
-          <div className="max-w-7xl mx-auto px-4 h-full flex items-center">
-            <div className="flex-1">
-              {/* Decorative wave */}
-              <div className="absolute left-0 bottom-0 w-1/3 h-full opacity-50">
-                <svg viewBox="0 0 200 400" className="h-full text-cyan-300">
-                  <path
-                    d="M0,400 Q50,300 0,200 T0,0 L0,400"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M20,400 Q70,300 20,200 T20,0"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M40,400 Q90,300 40,200 T40,0"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                </svg>
-              </div>
-            </div>
-            <div className="flex-1 flex justify-end">
-              <div className="bg-verix-yellow p-8 max-w-md">
-                <h2 className="text-4xl md:text-5xl font-black text-verix-blue italic leading-tight">
+          <div className="max-w-7xl mx-auto px-4 md:px-8 h-full flex items-center">
+            {/* Left Content */}
+            <div className="flex-1 z-10">
+              <div className="max-w-lg">
+                <h2 className="text-3xl md:text-5xl font-extrabold text-primary leading-tight">
                   {slide.title}
                 </h2>
-                <h2 className="text-4xl md:text-5xl font-black text-verix-red italic leading-tight">
+                <h2 className="text-3xl md:text-5xl font-extrabold text-foreground leading-tight">
                   {slide.subtitle}
                 </h2>
-                <p className="text-verix-blue text-sm mt-4 font-medium">
+                <p className="text-muted-foreground text-sm md:text-base mt-4 max-w-md">
                   {slide.description}
                 </p>
+                <button className="mt-6 buildings-btn-yellow text-sm">
+                  Vezi produsul
+                </button>
               </div>
             </div>
-          </div>
-          <div className="absolute bottom-8 right-8 text-verix-text font-bold text-xl">
-            {slide.brand}
+
+            {/* Right - Brand Badge */}
+            <div className="hidden md:flex flex-col items-end justify-center">
+              <div className="text-right">
+                <div className={`w-16 h-16 ${slide.accentColor} rounded-2xl flex items-center justify-center mb-4 shadow-lg`}>
+                  <Building2 className="text-white" size={32} />
+                </div>
+                <span className="text-foreground font-bold text-lg">{slide.brand}</span>
+              </div>
+            </div>
           </div>
         </div>
       ))}
@@ -117,13 +107,13 @@ const HeroSlider = () => {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-verix-blue text-white flex items-center justify-center hover:bg-verix-blue-dark transition-colors z-10"
+        className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-card/90 backdrop-blur text-primary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all z-10 rounded-full shadow-lg"
       >
         <ChevronLeft size={24} />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-verix-blue text-white flex items-center justify-center hover:bg-verix-blue-dark transition-colors z-10"
+        className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-card/90 backdrop-blur text-primary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all z-10 rounded-full shadow-lg"
       >
         <ChevronRight size={24} />
       </button>
@@ -134,8 +124,8 @@ const HeroSlider = () => {
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 ${
-              index === currentSlide ? "bg-verix-blue" : "bg-verix-gray-dark"
+            className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all ${
+              index === currentSlide ? "bg-primary w-6 md:w-8" : "bg-muted-foreground/30"
             }`}
           />
         ))}
