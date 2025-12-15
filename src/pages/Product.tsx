@@ -1,6 +1,6 @@
+import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Heart, ShoppingCart, ChevronLeft, Truck, Shield, RotateCcw, Minus, Plus } from "lucide-react";
-import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileBottomDock from "@/components/MobileBottomDock";
@@ -52,6 +52,11 @@ const Product = () => {
   const [quantity, setQuantity] = useState(1);
   
   const product = products[id || "1"] || products["1"];
+
+  // Scroll to top when page loads
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   return (
     <div className="min-h-screen bg-background pb-20 lg:pb-0">

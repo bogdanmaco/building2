@@ -54,13 +54,13 @@ const ProductCarousel = ({
           <button
             onClick={prev}
             disabled={currentIndex === 0}
-            className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-primary text-primary-foreground items-center justify-center hover:bg-primary/90 transition-colors z-10 disabled:opacity-50 disabled:cursor-not-allowed rounded-full shadow-lg"
+            className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-primary text-primary-foreground items-center justify-center hover:bg-primary/90 transition-colors z-10 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
           >
             <ChevronLeft size={24} />
           </button>
           <button
             onClick={next}
-            className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-primary text-primary-foreground items-center justify-center hover:bg-primary/90 transition-colors z-10 disabled:opacity-50 disabled:cursor-not-allowed rounded-full shadow-lg"
+            className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-primary text-primary-foreground items-center justify-center hover:bg-primary/90 transition-colors z-10 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
           >
             <ChevronRight size={24} />
           </button>
@@ -70,13 +70,13 @@ const ProductCarousel = ({
             <button
               onClick={prev}
               disabled={currentIndex === 0}
-              className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-primary text-primary-foreground flex items-center justify-center z-20 disabled:opacity-50 disabled:cursor-not-allowed rounded-full shadow-lg"
+              className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-primary text-primary-foreground flex items-center justify-center z-20 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
             >
               <ChevronLeft size={20} />
             </button>
             <button
               onClick={next}
-              className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-primary text-primary-foreground flex items-center justify-center z-20 rounded-full shadow-lg"
+              className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 bg-primary text-primary-foreground flex items-center justify-center z-20 shadow-lg"
             >
               <ChevronRight size={20} />
             </button>
@@ -120,14 +120,11 @@ const ProductCarousel = ({
           </div>
         </div>
 
-        {/* View More */}
+        {/* View More - Below products */}
         {showViewMore && (
-          <div className="flex items-center justify-end gap-4 mt-6">
-            <button className="buildings-btn-outline flex-1 md:flex-none">
+          <div className="flex justify-center mt-8">
+            <button className="buildings-btn-outline px-8 py-3">
               VEZI MAI MULTE
-            </button>
-            <button className="md:hidden w-14 h-14 rounded-full bg-card border-2 border-primary text-primary flex items-center justify-center shadow-lg hover:bg-primary hover:text-primary-foreground transition-all">
-              <ChevronUp size={24} />
             </button>
           </div>
         )}
